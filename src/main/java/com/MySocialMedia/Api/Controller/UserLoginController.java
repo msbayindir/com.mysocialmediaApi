@@ -17,6 +17,9 @@ public class UserLoginController {
 
     @Autowired
     private IUserLoginManager _loginManager;
+    public UserLoginController (IUserLoginManager loginManager){
+        _loginManager = loginManager;
+    }
     @GetMapping
     public List<UserLogin> userLoginList(){
 
@@ -27,4 +30,5 @@ public class UserLoginController {
 
         return _loginManager.getUserLoginById(id);
     }
+
 }
