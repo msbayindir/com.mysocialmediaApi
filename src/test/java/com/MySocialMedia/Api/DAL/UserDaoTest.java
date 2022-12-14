@@ -1,4 +1,4 @@
-package com.MySocialMedia.Api.DAO;
+package com.MySocialMedia.Api.DAL;
 
 import com.MySocialMedia.Api.Entities.UserLogin;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ class UserDaoTest {
     @Test
     void getUserLoginList() {
     List<UserLogin> userLoginList = _userLoginRepo.findAll();
-    assertEquals(2,userLoginList.stream().count());
+    assertEquals(2,userLoginList.size());
     }
 
     @Test

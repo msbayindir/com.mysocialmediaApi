@@ -1,11 +1,11 @@
 package com.MySocialMedia.Api.Service;
 
-import com.MySocialMedia.Api.DAO.IUserLoginRepository;
+import com.MySocialMedia.Api.DAL.IUserLoginRepository;
+import com.MySocialMedia.Api.DTO.UserLoginDTO;
 import com.MySocialMedia.Api.Entities.UserLogin;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ public class UserLoginIntegrationImpTest {
 
         _repo.saveAll(users);
 
-    List<UserLogin> list =_service.getUserLoginList();
-    UserLogin user = list.stream().filter(m->m.getUserName()=="Hüseyin").findAny().orElse(null);
+    List<UserLoginDTO> list =_service.getUserLoginList();
+    UserLoginDTO user = list.stream().filter(m->m.getUserName()=="Hüseyin").findAny().orElse(null);
 
 
     assertEquals(user.getUserName(),"Hüseyin");
