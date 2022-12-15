@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,14 +43,14 @@ public class UserLoginController {
     }
 
     @PostMapping()
-    public String userAdd(@Valid @RequestBody UserLoginDTO userLoginDTO){
+    public ResponseEntity<UserLoginDTO> userAdd(@Valid @RequestBody UserLoginDTO userLoginDTO){
 
-        _loginManager.userSignUp(UserLogin.builder()
+       _loginManager.userSignUp(UserLogin.builder()
                 .userName(userLoginDTO.getUserName())
                 .password(userLoginDTO.getPassword())
                 .id(userLoginDTO.getId())
                 .build());
-        return "basarılı";
+        return  ResponseEntity.created(null).body(userLoginDTO);
     }
 
 }
