@@ -1,7 +1,6 @@
 package com.MySocialMedia.Api.Service;
 
 import com.MySocialMedia.Api.DAL.IUserLoginRepository;
-import com.MySocialMedia.Api.DTO.UserLoginDTO;
 import com.MySocialMedia.Api.Entities.UserLogin;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,7 +30,7 @@ class UserLoginServiceTest {
 
         when(_loginRepo.findAll()).thenReturn(List.of(new UserLogin(),new UserLogin()));
 
-       List<UserLoginDTO> result = _loginService.getUserLoginList();
+       List<UserLogin> result = _loginService.getUserLoginList();
 
         assertThat(result.size()).isEqualTo(2);
 
@@ -42,7 +41,7 @@ class UserLoginServiceTest {
         UserLogin newuserLogin = new UserLogin(1,"sefa","123");
         when(_loginRepo.findById(anyInt())).thenReturn(newuserLogin);
 
-        UserLoginDTO result = _loginService.getUserLoginById(1);
+        UserLogin result = _loginService.getUserLoginById(1);
 
         assertEquals("sefa",result.getUserName());
 
