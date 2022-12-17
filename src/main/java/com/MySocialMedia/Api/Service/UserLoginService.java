@@ -2,6 +2,7 @@ package com.MySocialMedia.Api.Service;
 
 import com.MySocialMedia.Api.DAL.IUserLoginRepository;
 import com.MySocialMedia.Api.Entities.UserLogin;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class UserLoginService implements IUserLoginManager{
     }
 
     @Override
+    @Transactional
     public void userSignUp(UserLogin userLogin) {
         _userLoginRepo.save(userLogin);
     }
